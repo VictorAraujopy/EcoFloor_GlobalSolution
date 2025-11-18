@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "pzsanata",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 19.2, "left": -206.36, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -120.8,
+      "left": -199.38,
+      "attrs": {}
+    },
+    { "type": "wokwi-led", "id": "led1", "top": -42, "left": -73, "attrs": { "color": "red" } },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -9.4, "left": 19.2, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -105.3,
+      "left": -274.2,
+      "attrs": { "temperature": "80" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": -42,
+      "left": -34.6,
+      "attrs": { "color": "yellow" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "h-38.4", "v76.8" ] ],
+    [ "pir1:GND", "esp:GND.2", "black", [ "h38.14", "v76.8" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "led1:A", "esp:5", "green", [ "v0" ] ],
+    [ "relay1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "relay1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v230.4", "h144.1" ] ],
+    [ "pir1:OUT", "esp:23", "green", [ "h57.46", "v86.4" ] ],
+    [ "led3:C", "esp:GND.2", "green", [ "v0" ] ],
+    [ "led3:A", "esp:19", "green", [ "v0" ] ],
+    [ "esp:18", "relay1:IN", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
