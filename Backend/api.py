@@ -1,4 +1,4 @@
-# Em Backend/api.py
+
 from flask import Flask, jsonify, request
 import db_config
 from ML import classificar_desperdicio
@@ -22,7 +22,7 @@ def receber_dados_sensor():
     sala_id = dados.get('sala_id')
     temp_atual = dados.get('temperatura', 20)
 
-    # --- LÓGICA DE DECISÃO ---
+ 
     
     # Estado padrão: Mantém o que o Wokwi mandou
     comando_luz = "ON" if dados.get('luz_ligada') else "OFF"
@@ -34,14 +34,14 @@ def receber_dados_sensor():
     elif Class == "OK" and dados.get('presenca'):
         comando_luz = "ON"
 
-    # Lógica do AR CONDICIONADO
+    
     # Regra 1: Termostato (Se tiver gente e calor > 23, liga
     if temp_atual > 23:
         comando_ac = "ON"
     else:
         comando_ac = "OFF" # Se < 23, desliga para economizar
 
-    # Regra 2: Prioridade Absoluta (Se ML disse que é desperdício, desliga tudo)
+
     # Isso cobre sala vazia OU sala fria demais com ar ligado
     if Class == "DESPERDICIO_AC" or dados.get('presenca') == False:
         comando_ac = "OFF"

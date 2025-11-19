@@ -1,4 +1,3 @@
-# Em Backend/ML.py
 
 def classificar_desperdicio(dados_sensor):
     """

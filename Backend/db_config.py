@@ -1,4 +1,4 @@
-# Em Backend/db_config.py
+
 import oracledb
 import os
 from dotenv import load_dotenv
